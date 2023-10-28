@@ -1,0 +1,14 @@
+[Question]:
+- If you create a constructor method to build a DVD by title then create a constructor method to build a DVD by category. Does JAVA allow you to do this?
+=> Yes, Java allows to do this, you can create a constructor method to build a DVD by title and another constructor method to build a DVD by category in the same class. In Java, you can create multiple constructor methods in a class, which is known as constructor overloading that allows you to define different constructors with different parameter lists in the same class. 
+[Question]:
+Is JAVA a Pass by Value or a Pass by Reference programming language?
+=> Java is a pass by VALUE programming language. In Java, when you pass a parameter to a method, a copy of the value (not a reference to the original object) is passed to the method.  Java uses "pass by value" for primitive data types, and for objects, it passes a copy of the reference by value, which can give the appearance of "pass by reference".
+
+[Question]:
+- After the call of swap(jungleDVD, cinderellaDVD) why does the title of these two
+objects still remain?
+=> The swap method does not modify the objects, it only swaps the references to the objects, which doesn't affect the titles.
+
+- After the call of changeTitle(jungleDVD, cinderellaDVD.getTitle()) why is the title of the JungleDVD changed?
+=> Because I amdirectly modifying the object jungleDVD inside the changeTitle method. The dvd.setTitle(title) statement updates the title of the jungleDVD object to the new title passed as an argument (Cinderella).
