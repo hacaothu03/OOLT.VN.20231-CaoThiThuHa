@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry excluding="lab01/AddTwoMatrices/src/|lab01/SortArray/src/|lab01/DisplayDay/src/|lab02/AimsProject/src/|lab01/StarTriangle/src/" kind="src" path=""/>
+	<classpathentry kind="src" path="lab01/AddTwoMatrices/src"/>
+	<classpathentry kind="src" path="lab01/DisplayDay/src"/>
+	<classpathentry kind="src" path="lab01/SortArray/src"/>
+	<classpathentry kind="src" path="lab01/StarTriangle/src"/>
+	<classpathentry kind="src" path="lab02/AimsProject/src"/>
+	<classpathentry kind="output" path="lab01/AddTwoMatrices/bin"/>
+</classpath>
