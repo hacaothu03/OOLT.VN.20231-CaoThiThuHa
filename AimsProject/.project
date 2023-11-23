@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>AimsProject</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>Design/AIMS Class Diagram.png</name>
+			<type>1</type>
+			<location>C:/Users/Admin/OneDrive - Hanoi University of Science and Technology/aalab02/OOLT.VN.20231-20215271.CaoThiThuHa-release-lab02/OOLT.VN.20231-20215271.CaoThiThuHa-release-lab02/lab02/ClassDiagram/AIMS Class Diagram.png</location>
+		</link>
+		<link>
+			<name>Design/AIMS_Class-Diagram.asta</name>
+			<type>1</type>
+			<location>C:/Users/Admin/OneDrive - Hanoi University of Science and Technology/aalab02/OOLT.VN.20231-20215271.CaoThiThuHa-release-lab02/OOLT.VN.20231-20215271.CaoThiThuHa-release-lab02/lab02/ClassDiagram/AIMS_Class-Diagram.asta</location>
+		</link>
+		<link>
+			<name>Requirement/UseCase Diagram0.png</name>
+			<type>1</type>
+			<location>C:/Users/Admin/OneDrive - Hanoi University of Science and Technology/aalab02/OOLT.VN.20231-20215271.CaoThiThuHa-release-lab02/OOLT.VN.20231-20215271.CaoThiThuHa-release-lab02/lab02/UseCase/UseCase Diagram0.png</location>
+		</link>
+		<link>
+			<name>Requirement/lab02_usecase.asta</name>
+			<type>1</type>
+			<location>C:/Users/Admin/OneDrive - Hanoi University of Science and Technology/aalab02/OOLT.VN.20231-20215271.CaoThiThuHa-release-lab02/OOLT.VN.20231-20215271.CaoThiThuHa-release-lab02/lab02/UseCase/lab02_usecase.asta</location>
+		</link>
+	</linkedResources>
+</projectDescription>
