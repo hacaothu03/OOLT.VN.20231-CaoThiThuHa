@@ -1,74 +1,73 @@
 package hust.soict.hedspi.aims.disc;
 
-public class DigitalVideoDisc
-{
+public class DigitalVideoDisc {
+    // Attributes
     private String title;
     private String category;
     private String director;
     private int length;
     private float cost;
-    
-//Constructor to create a DVD object by title
-    public DigitalVideoDisc(String title)
-    {
+    private static int nbDigitalVideoDiscs = 0;
+    private int id;
+
+    public DigitalVideoDisc(String title) {
         this.title = title;
+        id = nbDigitalVideoDiscs;
+        nbDigitalVideoDiscs++;
     }
-    
-//Constructor to create a DVD object by title, category and cost
-    public DigitalVideoDisc(String title, String category, float cost)
-    {
+
+    public DigitalVideoDisc(String title, String category, float cost) {
         this.title = title;
         this.category = category;
         this.cost = cost;
+        id = nbDigitalVideoDiscs;
+        nbDigitalVideoDiscs++;
     }
-    
-// Constructor to create a DVD object by director, category, title and cost
-    public DigitalVideoDisc(String title, String category, String director, float cost)
-    {
+
+    public DigitalVideoDisc(String title, String category, String director, float cost) {
         this.title = title;
         this.category = category;
         this.director = director;
         this.cost = cost;
+        id = nbDigitalVideoDiscs;
+        nbDigitalVideoDiscs++;
     }
-//Constructor to create a DVD object by all attributes
-    public DigitalVideoDisc(String title, String category, String director, int length, float cost)
-    {
+
+    public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
         this.title = title;
         this.category = category;
         this.director = director;
         this.length = length;
         this.cost = cost;
+        id = nbDigitalVideoDiscs;
+        nbDigitalVideoDiscs++;
     }
-//Add getter and setter as needed
-    public String getTitle()
-    {
+
+    public String getTitle() {
         return title;
     }
 
-    public String getCategory()
-    {
+    public String getCategory() {
         return category;
     }
 
-    public String getDirector()
-    {
+    public String getDirector() {
         return director;
     }
 
-    public int getLength()
-    {
+    public int getLength() {
         return length;
     }
 
-    public float getCost()
-    {
+    public float getCost() {
         return cost;
     }
-
 
     public void setTitle(String title) {
         this.title = title;
     }
 
-    
+    public int getId() {
+        return id;
+    }
 }
