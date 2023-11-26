@@ -1,28 +1,46 @@
 package hust.soict.hedspi.aims.store;
 
-import hust.soict.hedspi.aims.disc.DigitalVideoDisc;
+import hust.soict.hedspi.aims.media.*;
+import java.util.*;
 
 public class Store {
-    private DigitalVideoDisc itemsInStore[] = new DigitalVideoDisc[65536];
+    private List<Media> itemsInStore = new ArrayList<Media>();
 
-    public void addDVD(DigitalVideoDisc disc) {
-        int index = itemsInStore.length - 1;
-        itemsInStore[index] = disc;
+    public void addMedia(Media media) {
+        itemsInStore.add(media);
     }
 
-    public void removeDVD(DigitalVideoDisc disc) {
-        DigitalVideoDisc itemsInStoreRemoved[] = new DigitalVideoDisc[itemsInStore.length - 1];
-        int j = 0;
-        for (int i = 0; i < itemsInStore.length; ++i) {
-            if (itemsInStore[i] != disc) {
-                itemsInStoreRemoved[j] = itemsInStore[i];
-                j++;
-            }
-        }
-        itemsInStore = itemsInStoreRemoved;
+    public void removeMedia(Media media) {
+        itemsInStore.remove(media);
     }
 
-    public DigitalVideoDisc[] getItemsInStore() {
+    public List<Media> getItemsInStore() {
         return itemsInStore;
     }
+
+    public Media search(String title) {
+        for (Media media : itemsInStore) {
+            if (media.getTitle().equals(title)) {
+                return media;
+            }
+        }
+        return null;
+    }
+
+    public void printStore() {
+        if (itemsInStore.size() == 0) {
+            System.out.println("The store is empty!");
+        } else {
+            System.out.println("********************STORE INVENTORY********************");
+            for (Media media : itemsInStore) {
+                System.out.println(media);
+            }
+            System.out.println("********************************************************");
+        }
+    }
+
+	public void addDVD(DigitalVideoDisc dvd2) {
+		// TODO Auto-generated method stub
+		
+	}
 }
