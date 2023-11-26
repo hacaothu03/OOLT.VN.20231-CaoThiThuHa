@@ -66,12 +66,12 @@ public class Aims {
         store.addMedia(dvd3);
 
 
-        Book book = new Book("The Valley of Fear", "Detective", 20.00f);
-        Book book1 = new Book("A Living Remedy: A Memoir", "Biography", 202.00f);
-        Book book2 = new Book("On the Origin of Time: Stephen Hawking's Final Theory", "Science", 120.00f);
-        store.addMedia(book);
+        Book book1 = new Book("The Valley of Fear", "Detective", 20.00f);
+        Book book2 = new Book("A Living Remedy: A Memoir", "Biography", 202.00f);
+        Book book3 = new Book("On the Origin of Time: Stephen Hawking's Final Theory", "Science", 120.00f);
         store.addMedia(book1);
         store.addMedia(book2);
+        store.addMedia(book3);
 
 
         CompactDisc cd1 = new CompactDisc("Adele - 30", "Music","Adele", 1500.98f);
