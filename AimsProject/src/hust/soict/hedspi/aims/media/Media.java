@@ -1,88 +1,91 @@
 package hust.soict.hedspi.aims.media;
 
 import java.util.Comparator;
+import java.time.LocalDate;
+import java.util.Comparator;
 
-public abstract class Media {
-    private int id;
-    private String title;
-    private String category;
-    private float cost;
-    private static int nbMedia = 0;
+public abstract class Media implements Comparable<Media>{
+	private int id;
+	private String title;
+	private String category;
+	private float cost;
+	private LocalDate dateAdded;
+	
+	private static int nbMedia = 0;
+	
+	public static final Comparator<Media> COMPARE_BY_TITLE_COST =
+			new MediaComparatorByTitleCost();
+	public static final Comparator<Media> COMPARE_BY_COST_TITLE = 
+			new MediaComparatorByCostTitle();
+	
+	
+	public String getTitle() {
+		return title;
+	}
 
-    public Media(String title) {
-        this.title = title;
-        this.id = ++nbMedia;
-    }
-    public Media(String title, String category) {
-        this.title = title;
-        this.category = category;
-        this.id = ++nbMedia;
-    }
-    public Media(String title, String category, float cost) {
-        this.title = title;
-        this.category = category;
-        this.cost = cost;
-        this.id = ++nbMedia;
-    }
+	public String getCategory() {
+		return category;
+	}
 
-    public int getId() {
-        return id;
-    }
-    public String getTitle() {
-        return title;
-    }
-    public String getCategory() {
-        return category;
-    }
-    public float getCost() {
-        return cost;
-    }
+	public float getCost() {
+		return cost;
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public LocalDate getDateAdded() {
+		return dateAdded;
+	}
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+	public int getId() {
+		return id;
+	}
+	
+	
+	public Media(String title) {
+		this.title = title;
+		this.dateAdded = LocalDate.now();
+		nbMedia++;
+		this.id = nbMedia;
+	}
+	public Media(String title, String category, float cost) {
+		this.title = title;
+		this.category = category;
+		this.cost = cost;
+		this.dateAdded = LocalDate.now();
+		nbMedia++;
+		this.id = nbMedia;
+	}
+	
+	public boolean equals(Object o) {
+		if (o instanceof Media) {
+			return ((Media)o).getId() == this.id;
+		}
+		return false;
+		
+	}
+	
+	public String toString() {
+		return "Media" + " - " + this.title + " - " + this.category + ": " + this.cost + " $"; 
+	}
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
+	
+	public boolean isMatch(String title) {
+		String[] tokens = title.split(" ", 0);
+		for (String token : tokens) {
+			if (this.getTitle().contains(token)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public int compareTo(Media d) {
+		int titleDiff = this.getTitle().compareTo(d.getTitle());
+		if (titleDiff != 0) {
+			return titleDiff;
+		} else {
+			return this.getCategory().compareTo(d.getCategory());
+		}
+	}
 
-    public void setCost(float cost) {
-        this.cost = cost;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o instanceof Media) {
-            Media oMedia = (Media) o;
-            if (oMedia.getTitle() == this.title) {
-                return true;
-            }
-            return false;
-        }
-        return false;
-    }
-
-    public boolean isMatch(String title) {
-        return this.getTitle().toLowerCase().contains(title.toLowerCase());
-    }
-
-    public int compareTo(Media other) {
-        int titleComparison = this.getTitle().compareTo(other.getTitle());
-        if (titleComparison != 0) {
-            return titleComparison;
-        }
-        else {
-            return Double.compare(this.getCost(), other.getCost());
-        }
-    }
-
-    public void play() {
-    }
-
-    public static final Comparator<Media> COMPARE_BY_TITLE_COST = new MediaComparatorByTitleCost();
-    public static final Comparator<Media> COMPARE_BY_COST_TITLE = new MediaComparatorByCostTitle();
+	public abstract StringBuffer play();
 }

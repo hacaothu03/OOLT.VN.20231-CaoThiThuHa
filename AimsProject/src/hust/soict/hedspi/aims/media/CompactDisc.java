@@ -3,62 +3,78 @@ package hust.soict.hedspi.aims.media;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.util.ArrayList;
+
 public class CompactDisc extends Disc implements Playable {
-    private String artist;
-    private List<Track> tracks = new ArrayList<Track>();
+	private String artist;
+	private ArrayList<Track> tracks = new 
+			ArrayList<Track>();
+	
+	public String getArtist() {
+		return artist;
+	}
+	
+	public ArrayList<Track> getTracks() {
+		return tracks;
+	}
 
-    public CompactDisc(String title) {
-        super(title);
-    }
-    public CompactDisc(String title, String category, String artist, float cost) {
-        super(title, category, cost);
-        this.artist = artist;
-    }
+	public CompactDisc(String title) {
+		super(title);
+	}
+	public CompactDisc(String title, String category, float cost, int length, String director, String artist) {
+		super(title, category, cost, length, director);
+		this.artist = artist;
+	}
+	public CompactDisc(String title, String category, float cost) {
+		super(title, category, cost);
+	}
+	
+	public int addTrack(Track track) {
+		if (tracks.contains(track)) {
+			System.out.println("This track has already been in the track list");
+			return 0;
+		}
+		System.out.println("Added the track");
+		tracks.add(track);
+		return 1;
+	}
+	
+	public int removeTrack(Track track) {
+		if (tracks.contains(track)) {
+			tracks.remove(track);
+			System.out.println("Removed the track");
+			return 1;
+		} 
+		System.out.println("This track is not in the track list");
+		return 0;
+	}
+	
+	public int getLength() {
+		int lengthDisc = 0;
+		for (Track t : tracks) {
+			lengthDisc += t.getLength();
+		}
+		return lengthDisc;
+	}
+	
+	public StringBuffer play() {
+		System.out.println("Playing CD: " + this.getTitle());
+		System.out.println("CD length: " + this.getLength());
+		
+		StringBuffer info = new StringBuffer("");
+		info.append("Playing CD: " + this.getTitle() + "\n" + "CD length: " + this.getLength() + "\n");
+		
+		for (Track t : tracks) {
+			StringBuffer trackInfo = t.play();
+			info.append(trackInfo + "\n");
+		}
+		
+		return info;
+	}
+	
+	public String toString() {
+		return "CD" + " - " + this.getTitle() + " - " + this.getCategory() + "-" + this.artist + "-"
+				+ "-" + this.getDirector() + "-" + this.getLength() + ": " + this.getCost() + " $";
+	}
 
-    public String getArtist() {
-        return artist;
-    }
-
-    public void addTrack(Track track) {
-        if (tracks.contains(track)) {
-            System.out.println("Track is already in the list");
-            return;
-        }
-        else {
-            tracks.add(track);
-        }
-    }
-
-    public void removeTrack(Track track) {
-        if (tracks.contains(track)) {
-            System.out.println("Track is in the list, removing");
-            tracks.remove(track);
-        }
-        else {
-            return;
-        }
-    }
-
-    @Override
-    public int getLength() {
-        int length = 0;
-
-        for (int i=0; i<tracks.size(); ++i) {
-            length += tracks.get(i).getLength();
-        }
-
-        return length;
-    }
-
-    public void play() {
-        System.out.println("Playing CD: " + this.getTitle());
-        System.out.println("CD length: " + this.getLength());
-        for (int i=0; i<tracks.size(); ++i) {
-            tracks.get(i).play();
-        }
-    }
-    @Override
-    public String toString() {
-        return "CD: " + this.getTitle() + " - Category: " + this.getCategory() + " - Artist: " + this.getArtist() + " - Cost: " + this.getCost() + "$";
-    }
 }

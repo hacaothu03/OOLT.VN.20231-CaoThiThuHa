@@ -74,7 +74,7 @@ public class Aims {
         store.addMedia(book3);
 
 
-        CompactDisc cd1 = new CompactDisc("Adele - 30", "Music","Adele", 1500.98f);
+        CompactDisc cd1 = new CompactDisc("Adele - 30", "Music",1500.98f);
         Track track1CD1 = new Track("All Night Parking (interlude)", 161);
         Track track2CD1 = new Track("To Be Loved", 403);
         Track track3CD1 = new Track("Woman Like Me", 300);
@@ -82,7 +82,7 @@ public class Aims {
         cd1.addTrack(track2CD1);
         cd1.addTrack(track3CD1);
 
-        CompactDisc cd2 = new CompactDisc("The Gods We Can Touch", "Music","Aurora", 2000.22f);
+        CompactDisc cd2 = new CompactDisc("The Gods We Can Touch", "Music",2000.22f);
         Track track1CD2 = new Track("Everything Matters", 180+34);
         Track track2CD2 = new Track("Blood in the Wine", 180+30);
         Track track3CD2 = new Track("Artemis", 60*2+39);
@@ -90,7 +90,7 @@ public class Aims {
         cd2.addTrack(track2CD2);
         cd2.addTrack(track3CD2);
 
-        CompactDisc cd3 = new CompactDisc("Purpose", "Music","Justin Bieber", 1000.98f);
+        CompactDisc cd3 = new CompactDisc("Purpose", "Music",1000.98f);
         Track track1CD3 = new Track("The Feeling", 4*60+5);
         Track track2CD3 = new Track("No Sense", 4*60+35);
         cd3.addTrack(track1CD3);
@@ -402,7 +402,7 @@ public class Aims {
                         Float cdCost = scanner.nextFloat();
                         scanner.nextLine();
 
-                        CompactDisc newCD = new CompactDisc(cdTitle, cdCategory, cdArtist, cdCost);
+                        CompactDisc newCD = new CompactDisc(cdTitle, cdCategory, cdCost);
 
 
                         System.out.println("Do you want to add tracks to your CD? (1) Yes (0) No:");
