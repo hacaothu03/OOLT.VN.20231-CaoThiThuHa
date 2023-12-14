@@ -29,25 +29,26 @@ public class CompactDisc extends Disc implements Playable {
 		super(title, category, cost);
 	}
 	
+	public int removeTrack(Track track) {
+		if (tracks.contains(track)) {
+			tracks.remove(track);
+			System.out.println("This track was removed!");
+			return 1;
+		} 
+		System.out.println("Invalid Track");
+		return 0;
+	}
 	public int addTrack(Track track) {
 		if (tracks.contains(track)) {
 			System.out.println("This track has already been in the track list");
 			return 0;
 		}
-		System.out.println("Added the track");
+		System.out.println("This track has been added.");
 		tracks.add(track);
 		return 1;
 	}
 	
-	public int removeTrack(Track track) {
-		if (tracks.contains(track)) {
-			tracks.remove(track);
-			System.out.println("Removed the track");
-			return 1;
-		} 
-		System.out.println("This track is not in the track list");
-		return 0;
-	}
+	
 	
 	public int getLength() {
 		int lengthDisc = 0;

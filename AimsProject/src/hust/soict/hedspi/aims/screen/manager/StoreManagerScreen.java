@@ -19,11 +19,14 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
+import hust.soict.hedspi.aims.media.Book;
+import hust.soict.hedspi.aims.media.CompactDisc;
+import hust.soict.hedspi.aims.media.DigitalVideoDisc;
 import hust.soict.hedspi.aims.media.Media;
 import hust.soict.hedspi.aims.store.Store;
 
 public class StoreManagerScreen extends JFrame {
-	private Store store;
+	private static Store store;
 	JPanel centerPanel;
 	
 	public StoreManagerScreen(Store store) {
@@ -125,6 +128,19 @@ public class StoreManagerScreen extends JFrame {
 	}
 	
 	public static void main(String[] args) {
-		new StoreManagerScreen(new Store());
+	    store = new Store();
+
+	    store.addMedia(new CompactDisc("Suivre le soleil", "L'amour", 8.5f, 30, "James", "Maire"));
+	    store.addMedia(new CompactDisc("Last Christmas", "Xmas", 10f, 100, "John", "Wham"));
+	    store.addMedia(new CompactDisc("Under", "Love", 10f, 90, "Hayaa", "Mike"));
+	    store.addMedia(new Book("Harry Potter and Philosopher's Stone (2001)", "JK. Rowling", 5f, 50));
+	    store.addMedia(new Book("Harry Potter and Chamber of Secrets (2002)", "JK. Rowling", 5f, 60));
+	    store.addMedia(new Book("Harry Potter and Prisoner of Azkaban (2004)", "JK. Rowling", 5f, 70));
+	    store.addMedia(new Book("Harry Potter and the Goblet of Fire (2006)", "JK. Rowling", 5f, 80));
+	    store.addMedia(new DigitalVideoDisc("How You Like That","Love", "BLACKPINK",40, 50f));
+	    store.addMedia(new DigitalVideoDisc("Gone", "Love", "Teddy", 20, 30f));
+
+	    new StoreManagerScreen(store);
 	}
+
 }

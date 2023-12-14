@@ -8,27 +8,29 @@ public class Store {
     private ArrayList<Media> itemsInStore = new ArrayList<Media>();
 
     public ArrayList<Media> getItemsInStore() {
-		return itemsInStore;
-	}
-
-
-    // Add and remove media from the store
-    public void addMedia(Media media) {
-        if (itemsInStore.contains(media)) {
-            System.out.println("The media " + media.getTitle() + " is already in the store!");
-        } else {
-            itemsInStore.add(media);
-            System.out.println("The media " + media.getTitle() + " has been added to the store.");
-        }
+        return itemsInStore;
     }
+    
+    // Remove media from the store
     public void removeMedia(Media media) {
         if (itemsInStore.remove(media)) {
-            System.out.println("The media " + media.getTitle() + " has been removed from the store.");
+            System.out.println("This media " + media.getTitle() + " has been removed from the store.");
         } else {
-            System.out.println("The media " + media.getTitle() + " is not in the store!");
+            System.out.println("This media " + media.getTitle() + " is not in the store!");
         }
     }
 
+    // Add media from the store
+    public void addMedia(Media media) {
+        if (itemsInStore.contains(media)) {
+            System.out.println("This media " + media.getTitle() + " is already in the store!");
+        } else {
+            itemsInStore.add(media);
+            System.out.println("This media " + media.getTitle() + " has been added to the store.");
+        }
+    }
+
+    
     // Print the store
     public void printStore() {
         if (itemsInStore.size() == 0) {
@@ -43,11 +45,26 @@ public class Store {
     }
 
     public Media search(String title) {
-		for (Media media : itemsInStore) {
-			if (media.getTitle().equals(title)) {
-				return media;
-			}
-		}
-		return null;
-	}
+        for (Media media : itemsInStore) {
+            if (media.getTitle().equals(title)) {
+                return media;
+            }
+        }
+        return null;
+    }
+
+
+		
+	
+    // Store test
+    // Add DVD to the store
+    public void addDVD(DigitalVideoDisc dvd) {
+        if (itemsInStore.contains(dvd)) {
+            System.out.println("This DVD " + dvd.getTitle() + " is already in the store!");
+        } else {
+            itemsInStore.add(dvd);
+            System.out.println("This DVD " + dvd.getTitle() + " has been added to the store.");
+        }
+    }
+
 }

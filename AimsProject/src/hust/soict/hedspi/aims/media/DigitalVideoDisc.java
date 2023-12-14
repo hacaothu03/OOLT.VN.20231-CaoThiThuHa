@@ -25,6 +25,7 @@ public class DigitalVideoDisc extends Disc implements Playable {
 		this.director = director;
 		nbDigitalVideoDiscs++;
 	}
+	
 	public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
 		super(title, category, cost);
 		this.director = director;
@@ -43,6 +44,10 @@ public class DigitalVideoDisc extends Disc implements Playable {
 		StringBuffer info = new StringBuffer("");
 		info.append("Playing DVD: " + this.getTitle() + "\n" + "DVD length: " + this.getLength());
 		return info;
+	}
+	public void setTitle(String title) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
