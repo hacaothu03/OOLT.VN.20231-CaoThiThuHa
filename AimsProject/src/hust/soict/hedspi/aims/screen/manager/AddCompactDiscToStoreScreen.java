@@ -31,7 +31,7 @@ public class AddCompactDiscToStoreScreen extends AddItemToStoreScreen {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			String title=null, category=null, director=null, artist=null;
-			float cost=0;
+			float cost=0f;
 			int length=0;
 			for (JTextField tf : tfs) {
 				if (tf.getName().equals("Title")) {

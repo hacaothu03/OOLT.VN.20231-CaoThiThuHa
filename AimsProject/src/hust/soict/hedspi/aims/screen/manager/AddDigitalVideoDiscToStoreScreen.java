@@ -35,17 +35,17 @@ public class AddDigitalVideoDiscToStoreScreen extends AddItemToStoreScreen {
 				if(tf.getName().equals("Title")) {
 					title = tf.getText();
 				}
-				if(tf.getName().equals("Cost")) {
+				else if(tf.getName().equals("Cost")) {
 					cost = Float.parseFloat(tf.getText());
 				}
-				if(tf.getName().equals("Category")) {
+				else if(tf.getName().equals("Category")) {
 					category = tf.getText();
 				}
-				if(tf.getName().equals("Director")) {
+				else if(tf.getName().equals("Director")) {
 					System.out.println(tf.getText());
 					director = tf.getText();
 				}
-				if(tf.getName().equals("Length")) {
+				else if(tf.getName().equals("Length")) {
 					length = Integer.parseInt(tf.getText());
 				}	
 			}

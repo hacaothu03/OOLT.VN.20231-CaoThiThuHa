@@ -52,6 +52,13 @@ public class Book extends Media {
 		return this.wordFrequency;
 	}
 	
+	public void removeAuthor(String authorName) {
+		if (authors.contains(authorName)) {
+			authors.remove(authorName);
+		} else {
+			System.out.println("Invalid Author");
+		}
+	}
 	
 	public void addAuthor(String authorName) {
 		if (authors.contains(authorName)) {
@@ -61,13 +68,6 @@ public class Book extends Media {
 		}
 	}
 	
-	public void removeAuthor(String authorName) {
-		if (authors.contains(authorName)) {
-			authors.remove(authorName);
-		} else {
-			System.out.println("This author is not in the list");
-		}
-	}
 	
 	public String toString() {
 		return this.getTitle() + "-" + this.getCategory() + "-" + this.authors
