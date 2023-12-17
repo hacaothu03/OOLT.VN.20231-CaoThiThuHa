@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -28,27 +29,34 @@ public class PainterController {
     @FXML
     private Pane drawingAreaPane;
 
+    // Declare a ToggleGroup field named Tools
+    @FXML
+    private ToggleGroup Tools;
+
     @FXML
     void clearButtonPressed(ActionEvent event) {
-		  drawingAreaPane.getChildren().clear();
+        drawingAreaPane.getChildren().clear();
     }
 
     @FXML
     void drawingAreaMouseDragged(MouseEvent event) {
-      Rectangle clipArea = new Rectangle(0, 0, drawingAreaPane.getWidth(), drawingAreaPane.getHeight());
-      drawingAreaPane.setClip(clipArea);
-      Color inkColor = Color.BLACK;
-      if (eraser.isSelected()) {
-        inkColor = Color.WHITE;
-      } 
-      Circle newCircle = new Circle(event.getX(), event.getY(), 4, inkColor);
-      drawingAreaPane.getChildren().add(newCircle);
+        Rectangle clipArea = new Rectangle(0, 0, drawingAreaPane.getWidth(), drawingAreaPane.getHeight());
+        drawingAreaPane.setClip(clipArea);
+        Color inkColor = Color.BLACK;
+        if (Tools.getSelectedToggle() == eraser) {
+            inkColor = Color.WHITE;
+        }
+        Circle newCircle = new Circle(event.getX(), event.getY(), 4, inkColor);
+        drawingAreaPane.getChildren().add(newCircle);
     }
 
     @FXML
     void initialize() {
         assert drawingAreaPane != null : "fx:id=\"drawingAreaPane\" was not injected: check your FXML file 'Painter.fxml'.";
 
+        // Initialize the ToggleGroup named Tools
+        Tools = new ToggleGroup();
+        pen.setToggleGroup(Tools);
+        eraser.setToggleGroup(Tools);
     }
-
 }
