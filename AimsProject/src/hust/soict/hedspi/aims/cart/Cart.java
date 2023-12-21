@@ -1,35 +1,62 @@
 package hust.soict.hedspi.aims.cart;
 
+import hust.soict.hedspi.aims.exception.LimitExceededException;
 import hust.soict.hedspi.aims.media.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+
 import java.util.*;
 public class Cart {
     public static final int MAX_NUMBERS_ORDERED = 20;
-    private List<Media> itemsOrdered = new ArrayList<Media>();
+    
+    private ObservableList<Media> itemsOrdered = 
+			FXCollections.observableArrayList();
+    
+    public int addMedia(Media media) throws LimitExceededException {
+        if (itemsOrdered == null) {
+            itemsOrdered = FXCollections.observableArrayList(); // Khởi tạo nếu chưa có
+        }
 
-    public void addMedia(Media media) {
-        if (itemsOrdered.size() >= MAX_NUMBERS_ORDERED) {
-            System.out.println("The cart is almost full");
-        }
-        else if (itemsOrdered.contains(media)) {
-            System.out.println("Already in cart");
-        }
-        else {
+        if (itemsOrdered.size() <  MAX_NUMBERS_ORDERED) {
             itemsOrdered.add(media);
-            System.out.println("The media has been added");
+            System.out.println("The media has been added to the cart");
+            return 1;
+        } else {
+            throw new LimitExceededException("ERROR: The cart is almost full"); 
         }
     }
-
+    
+    public int addMedia(Media media1, Media media2) throws LimitExceededException {
+		int countAdded = 0;
+		try {
+			countAdded += addMedia(media1);
+			countAdded += addMedia(media2);
+		} catch (LimitExceededException e) {
+			throw e;
+		}
+		
+		return countAdded;		
+	}
+	public int addMedia(ArrayList<Media> medias) throws LimitExceededException {
+		int countAdded = 0;
+		for (int i=0; i<medias.size(); i++) {
+			try {
+				countAdded += addMedia(medias.get(i));
+			} catch (LimitExceededException e) {
+				throw e;
+			}
+		}
+		return countAdded;
+	}
+	
+    
     public void removeMedia(Media media) {
-        if (itemsOrdered.size() == 0) {
-            System.out.println("What the hell are you trying to remove?");
-        }
-        else {
-            if (itemsOrdered.remove(media)) {
-                System.out.println(media.getTitle() + "The media has been removed");
-            }
-            else {
-                System.out.println("Is the media even in the cart?");
-            }
+        if (itemsOrdered.remove(media)) {
+            System.out.println(media.getTitle() + "The media has been removed");
+        } else {
+            System.out.println("Is the media even in the cart?");
         }
     }
 
@@ -106,10 +133,67 @@ public class Cart {
     }
 
     public void empty() {
+        itemsOrdered.clear();
     }
+
 
 	public void addDigitalVideoDisc(DigitalVideoDisc dvd1) {
 		// TODO Auto-generated method stub
 		
+	}
+
+
+	public ObservableList<Media> getItemsOrdered() {
+		return itemsOrdered;
+	}
+
+	public Media getChosenItem() {
+		if (itemsOrdered.size() >= 5) {
+			int index = (int)(Math.random() * itemsOrdered.size());
+			Media chosenItem = itemsOrdered.get(index);
+			System.out.println("The lucky item was chosen is: " + chosenItem);
+			
+			removeMedia(chosenItem);
+			System.out.println("The bill of this order is " + totalCost());
+			
+			return chosenItem;
+		}
+		return null;
+	}
+	@Override
+	
+	public String toString() {
+	    StringBuilder result = new StringBuilder();
+	    result.append("********************* CART *********************\n");
+	    result.append("Ordered Items:\n");
+	    for (int i = 0; i < itemsOrdered.size(); ++i) {
+	        Media a = itemsOrdered.get(i);
+	        result.append(String.format("%d. DVD - %s - %s: %.2f $\n", i + 1, a.getTitle(), a.getCategory(), a.getCost()));
+	    }
+	    result.append(String.format("Total cost: %.2f\n", totalCost()));
+	    result.append("************************************************\n");
+	    return result.toString();
+	}
+	
+	public void showTotalCostPopup() {
+	    Alert alert = new Alert(AlertType.INFORMATION);
+	    alert.setTitle("Total Cost");
+	    alert.setHeaderText(null);
+	    alert.setContentText("The total cost is: " + totalCost());
+
+	    alert.showAndWait();
+	}
+	
+	public Media getChosenItem1() {
+	    if (itemsOrdered.size() >= 5) {
+	        int index = (int)(Math.random() * itemsOrdered.size());
+	        Media chosenItem = itemsOrdered.get(index);
+	        System.out.println("The lucky item was chosen is: " + chosenItem);
+
+	        removeMedia(chosenItem);
+	        showTotalCostPopup(); // Hiển thị popup với tổng chi phí
+	        return chosenItem;
+	    }
+	    return null;
 	}
 }

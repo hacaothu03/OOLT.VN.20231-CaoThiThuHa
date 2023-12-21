@@ -1,5 +1,6 @@
 package hust.soict.hedspi.aims.media;
 
+import hust.soict.hedspi.aims.exception.PlayerException;
 
 public class Disc extends Media {
 	private int length;
@@ -25,13 +26,13 @@ public class Disc extends Media {
 		this.length = length;
 		this.director = director;
 	}
-	
-	
 	@Override
-	public StringBuffer play() {
+	public StringBuffer play() throws PlayerException {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	
 	
 
 }

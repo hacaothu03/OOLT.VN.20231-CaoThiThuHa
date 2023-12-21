@@ -1,6 +1,9 @@
 package hust.soict.hedspi.aims.media;
 
 import java.util.Comparator;
+
+import hust.soict.hedspi.aims.exception.PlayerException;
+
 import java.time.LocalDate;
 import java.util.Comparator;
 
@@ -87,5 +90,22 @@ public abstract class Media implements Comparable<Media>{
 		}
 	}
 
-	public abstract StringBuffer play();
+	public abstract StringBuffer play() throws PlayerException;
+
+	public boolean filterProperty(String filter, String type) {
+        if (filter == null || filter.isEmpty()) {
+            return true;
+        } else {
+    		if (type == "title") {
+    			if (this.getTitle().toLowerCase().indexOf(filter.toLowerCase()) != -1) {
+    				return true;
+    			}
+    		} else if (type == "id") {
+    			if(Integer.toString(this.getId()).toLowerCase().indexOf(filter.toLowerCase()) != -1) {
+    				return true;
+    			}
+    		}
+        }
+        return false;
+	}
 }
