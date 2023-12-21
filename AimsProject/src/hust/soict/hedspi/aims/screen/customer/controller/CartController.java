@@ -157,10 +157,10 @@ public class CartController {
     
     @FXML
     void placeOrderClicked(ActionEvent event) {
-    	Media luckyItem = cart.getALuckyItem();
-    	if (luckyItem != null) {
+    	Media chosenItem = cart.getChosenItem();
+    	if (chosenItem != null) {
     		costLabel.setText(cart.totalCost() + " $");
-    		Alert alert = new Alert(Alert.AlertType.INFORMATION, "You got " + luckyItem.toString() + " as a lucky item.\n" + "The total cost is " + cart.totalCost() + " $");
+    		Alert alert = new Alert(Alert.AlertType.INFORMATION, "You got " + chosenItem.toString() + ".\n" + "The total cost is " + cart.totalCost() + " $");
             alert.showAndWait();
     	}
     	cart = new Cart();

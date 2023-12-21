@@ -45,7 +45,7 @@ public class Cart {
 	
     public void removeMedia(Media media) {
         if (itemsOrdered.size() == 0) {
-            System.out.println("What the hell are you trying to remove?");
+            System.out.println("What do you want to remove?");
         }
         else {
             if (itemsOrdered.remove(media)) {
@@ -142,16 +142,16 @@ public class Cart {
 		return itemsOrdered;
 	}
 
-	public Media getALuckyItem() {
+	public Media getChosenItem() {
 		if (itemsOrdered.size() >= 5) {
 			int index = (int)(Math.random() * itemsOrdered.size());
-			Media luckyItem = itemsOrdered.get(index);
-			System.out.println("The lucky item: " + luckyItem);
+			Media chosenItem = itemsOrdered.get(index);
+			System.out.println("The lucky item: " + chosenItem);
 			
-			removeMedia(luckyItem);
-			System.out.println("The bill of this order is now " + totalCost());
+			removeMedia(chosenItem);
+			System.out.println("The bill of this order is " + totalCost());
 			
-			return luckyItem;
+			return chosenItem;
 		}
 		return null;
 	}
