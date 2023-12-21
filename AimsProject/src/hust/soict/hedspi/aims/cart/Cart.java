@@ -2,13 +2,14 @@ package hust.soict.hedspi.aims.cart;
 
 import hust.soict.hedspi.aims.exception.LimitExceededException;
 import hust.soict.hedspi.aims.media.*;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.util.*;
 public class Cart {
     public static final int MAX_NUMBERS_ORDERED = 20;
-    private List<Media> itemsOrdered = new ArrayList<Media>();
-
+    private ObservableList<Media> itemsOrdered = 
+			FXCollections.observableArrayList();
     public int addMedia(Media media) throws LimitExceededException {
 		if (itemsOrdered.size() <  MAX_NUMBERS_ORDERED) {
 			itemsOrdered.add(media);
@@ -136,8 +137,9 @@ public class Cart {
 		
 	}
 
+
 	public ObservableList<Media> getItemsOrdered() {
-		return (ObservableList<Media>) itemsOrdered;
+		return itemsOrdered;
 	}
 
 	public Media getALuckyItem() {
