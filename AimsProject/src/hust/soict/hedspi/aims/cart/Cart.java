@@ -1,24 +1,47 @@
 package hust.soict.hedspi.aims.cart;
 
+import hust.soict.hedspi.aims.exception.LimitExceededException;
 import hust.soict.hedspi.aims.media.*;
+import javafx.collections.ObservableList;
+
 import java.util.*;
 public class Cart {
     public static final int MAX_NUMBERS_ORDERED = 20;
     private List<Media> itemsOrdered = new ArrayList<Media>();
 
-    public void addMedia(Media media) {
-        if (itemsOrdered.size() >= MAX_NUMBERS_ORDERED) {
-            System.out.println("The cart is almost full");
-        }
-        else if (itemsOrdered.contains(media)) {
-            System.out.println("Already in cart");
-        }
-        else {
-            itemsOrdered.add(media);
-            System.out.println("The media has been added");
-        }
-    }
-
+    public int addMedia(Media media) throws LimitExceededException {
+		if (itemsOrdered.size() <  MAX_NUMBERS_ORDERED) {
+			itemsOrdered.add(media);
+			System.out.println("The media has been added to the cart");
+			return 1;
+		} else {
+			throw new LimitExceededException("ERROR: The cart is almost full"); 
+		}
+	}
+    
+    public int addMedia(Media media1, Media media2) throws LimitExceededException {
+		int countAdded = 0;
+		try {
+			countAdded += addMedia(media1);
+			countAdded += addMedia(media2);
+		} catch (LimitExceededException e) {
+			throw e;
+		}
+		
+		return countAdded;		
+	}
+	public int addMedia(ArrayList<Media> medias) throws LimitExceededException {
+		int countAdded = 0;
+		for (int i=0; i<medias.size(); i++) {
+			try {
+				countAdded += addMedia(medias.get(i));
+			} catch (LimitExceededException e) {
+				throw e;
+			}
+		}
+		return countAdded;
+	}
+	
     public void removeMedia(Media media) {
         if (itemsOrdered.size() == 0) {
             System.out.println("What the hell are you trying to remove?");
@@ -111,5 +134,23 @@ public class Cart {
 	public void addDigitalVideoDisc(DigitalVideoDisc dvd1) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public ObservableList<Media> getItemsOrdered() {
+		return (ObservableList<Media>) itemsOrdered;
+	}
+
+	public Media getALuckyItem() {
+		if (itemsOrdered.size() >= 5) {
+			int index = (int)(Math.random() * itemsOrdered.size());
+			Media luckyItem = itemsOrdered.get(index);
+			System.out.println("The lucky item: " + luckyItem);
+			
+			removeMedia(luckyItem);
+			System.out.println("The bill of this order is now " + totalCost());
+			
+			return luckyItem;
+		}
+		return null;
 	}
 }

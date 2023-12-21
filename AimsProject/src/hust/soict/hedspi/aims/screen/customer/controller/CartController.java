@@ -126,15 +126,9 @@ public class CartController {
 
     @FXML
     void btnPlayPressed(ActionEvent event) {
-    	try {
-    		Media media = tblMedia.getSelectionModel().getSelectedItem();
-        	Alert alert = new Alert(Alert.AlertType.INFORMATION, ((Playable) media).play().toString());
-            alert.showAndWait();
-    	} catch (PlayerException e) {
-    		e.printStackTrace();
-    		Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
-            alert.showAndWait();
-    	}
+    	Media media = tblMedia.getSelectionModel().getSelectedItem();
+		Alert alert = new Alert(Alert.AlertType.INFORMATION, ((Playable) media).play().toString());
+		alert.showAndWait();
     	
     }
 
