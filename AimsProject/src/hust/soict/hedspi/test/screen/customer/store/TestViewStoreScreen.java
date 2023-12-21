@@ -33,21 +33,16 @@ public class TestViewStoreScreen extends Application {
 		store = new Store();
 		cart = new Cart();
 		
-		DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King", "Animation",
-				"Roger Allers", 87, 19.95f);
-		store.addMedia(dvd1);
-		DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star Wars", "Science Fiction",
-				"George Lucas", 87, 19.95f);
-		store.addMedia(dvd2);
-		DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladin", "Animation",
-				18.99f);
-		store.addMedia(dvd3);
-		Book book1 = new Book("Hands-on Machine Learning", "Technology", 
-				20.00f);
-		store.addMedia(book1);
-		CompactDisc cd1 = new CompactDisc("Perfect Time", "Music", 
-				15.98f);
-		store.addMedia(cd1);
+		store.addMedia(new CompactDisc("Suivre le soleil", "L'amour", 8.5f, 30, "James", "Maire"));
+	    store.addMedia(new CompactDisc("Last Christmas", "Xmas", 10f, 100, "John", "Wham"));
+	    store.addMedia(new CompactDisc("Under", "Love", 10f, 90, "Hayaa", "Mike"));
+	    store.addMedia(new Book("Harry Potter and Philosopher's Stone (2001)", "JK. Rowling", 5f, 50));
+	    store.addMedia(new Book("Harry Potter and Chamber of Secrets (2002)", "JK. Rowling", 5f, 60));
+	    store.addMedia(new Book("Harry Potter and Prisoner of Azkaban (2004)", "JK. Rowling", 5f, 70));
+	    store.addMedia(new Book("Harry Potter and the Goblet of Fire (2006)", "JK. Rowling", 5f, 80));
+	    store.addMedia(new DigitalVideoDisc("How You Like That","Love", "BLACKPINK",40, 50f));
+	    store.addMedia(new DigitalVideoDisc("Gone", "Love", "Teddy", 20, 30f));
+
 		
 		launch(args);
 	}

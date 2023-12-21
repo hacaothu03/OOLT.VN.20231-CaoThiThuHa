@@ -1,8 +1,6 @@
 package hust.soict.hedspi.aims.screen.customer.controller;
 
  
-import javax.swing.JOptionPane;
-
 import hust.soict.hedspi.aims.cart.Cart;
 import hust.soict.hedspi.aims.exception.LimitExceededException;
 import hust.soict.hedspi.aims.exception.PlayerException;
@@ -49,7 +47,7 @@ public class ItemController {
     }
 
     @FXML
-    void btnPlayClicked(ActionEvent event) {
+    void btnPlayClicked(ActionEvent event) throws PlayerException {
     	Alert alert = new Alert(Alert.AlertType.INFORMATION, ((Playable) media).play().toString());
 		alert.showAndWait();
     	

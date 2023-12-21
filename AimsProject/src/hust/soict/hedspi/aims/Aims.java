@@ -2,6 +2,7 @@ package hust.soict.hedspi.aims;
 
 import hust.soict.hedspi.aims.cart.Cart;
 import hust.soict.hedspi.aims.exception.LimitExceededException;
+import hust.soict.hedspi.aims.exception.PlayerException;
 import hust.soict.hedspi.aims.media.*;
 import hust.soict.hedspi.aims.store.Store;
 import java.util.Scanner;
@@ -10,7 +11,7 @@ public class Aims {
     private static Store store = new Store();
     private static Cart cart = new Cart();
 
-    public static void main(String[] args) throws LimitExceededException {
+    public static void main(String[] args) throws LimitExceededException, PlayerException {
 
         // Init add media to the store
         initSetup();
@@ -115,7 +116,7 @@ public class Aims {
         System.out.println("--------------------------------");
         System.out.println("Please choose a number: 0-1-2-3");
     }
-    public static void storeMenu(Scanner scanner) throws LimitExceededException {
+    public static void storeMenu(Scanner scanner) throws LimitExceededException, PlayerException {
         boolean back = false;
         while (!back) {
             store.printStore();
@@ -207,7 +208,7 @@ public class Aims {
             }
         }
     }
-    public static void mediaDetailsMenu(Scanner scanner, Media media) throws LimitExceededException {
+    public static void mediaDetailsMenu(Scanner scanner, Media media) throws LimitExceededException, PlayerException {
         boolean back = false;
         while (!back) {
             System.out.println("Options: ");
@@ -241,7 +242,7 @@ public class Aims {
             }
         }
     }
-    public static void cartMenu(Scanner scanner) {
+    public static void cartMenu(Scanner scanner) throws PlayerException {
         boolean back = false;
         while (!back) {
             cart.printOrderedItems();

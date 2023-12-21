@@ -3,8 +3,6 @@ package hust.soict.hedspi.aims.screen.customer.controller;
 import java.io.IOException;
 import java.util.Collections;
 
-import javax.swing.JOptionPane;
-
 import hust.soict.hedspi.aims.cart.Cart;
 import hust.soict.hedspi.aims.exception.PlayerException;
 import hust.soict.hedspi.aims.media.*;
@@ -125,7 +123,7 @@ public class CartController {
     }
 
     @FXML
-    void btnPlayPressed(ActionEvent event) {
+    void btnPlayPressed(ActionEvent event) throws PlayerException {
     	Media media = tblMedia.getSelectionModel().getSelectedItem();
 		Alert alert = new Alert(Alert.AlertType.INFORMATION, ((Playable) media).play().toString());
 		alert.showAndWait();
